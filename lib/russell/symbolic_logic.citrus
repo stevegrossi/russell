@@ -1,0 +1,43 @@
+grammar SymbolicLogic
+
+  rule expression
+    connective | sentence | negation
+  end
+
+  rule connective
+    disjunction | conjunction | implication | biconditional
+  end
+
+  rule group
+    '(' connective ')'
+  end
+
+  rule statement
+    sentence | negation | group
+  end
+
+  rule disjunction
+    statement ' v ' statement
+  end
+
+  rule conjunction
+    statement ' ^ ' statement
+  end
+
+  rule implication
+    statement ' -> ' statement
+  end
+
+  rule biconditional
+    statement ' <-> ' statement
+  end
+
+  rule negation
+    '~' statement
+  end
+
+  rule sentence
+    [A-Z]1*1
+  end
+
+end
